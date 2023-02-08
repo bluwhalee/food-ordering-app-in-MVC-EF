@@ -189,12 +189,32 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "D:\\EAD\\Food\\food\\wwwroot\\image\\1664273695795-image232614030.png",
+      "PackagePath": "staticwebassets\\image\\1664273695795-image232614030.png"
+    },
+    {
+      "Id": "D:\\EAD\\Food\\food\\wwwroot\\image\\Lasagna-Recipe-f231025153.jpg",
+      "PackagePath": "staticwebassets\\image\\Lasagna-Recipe-f231025153.jpg"
+    },
+    {
+      "Id": "D:\\EAD\\Food\\food\\wwwroot\\image\\Lasagna-Recipe-f231415450.jpg",
+      "PackagePath": "staticwebassets\\image\\Lasagna-Recipe-f231415450.jpg"
+    },
+    {
+      "Id": "D:\\EAD\\Food\\food\\wwwroot\\image\\Lasagna-Recipe-f232257862.jpg",
+      "PackagePath": "staticwebassets\\image\\Lasagna-Recipe-f232257862.jpg"
+    },
+    {
       "Id": "D:\\EAD\\Food\\food\\wwwroot\\image\\Lasagna-Recipe-f232512272.jpg",
       "PackagePath": "staticwebassets\\image\\Lasagna-Recipe-f232512272.jpg"
     },
     {
       "Id": "D:\\EAD\\Food\\food\\wwwroot\\image\\Lasagna-Recipe-f232725888.jpg",
       "PackagePath": "staticwebassets\\image\\Lasagna-Recipe-f232725888.jpg"
+    },
+    {
+      "Id": "D:\\EAD\\Food\\food\\wwwroot\\image\\download232431081.jfif",
+      "PackagePath": "staticwebassets\\image\\download232431081.jfif"
     },
     {
       "Id": "D:\\EAD\\Food\\food\\wwwroot\\js\\site.js",

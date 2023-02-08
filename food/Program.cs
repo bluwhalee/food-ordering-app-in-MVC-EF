@@ -3,11 +3,13 @@ using Microsoft.EntityFrameworkCore;
 using food.Areas.Identity.Data;
 using food.Models;
 using food;
+using food.Helpers;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("foodContextConnection") ?? throw new InvalidOperationException("Connection string 'foodContextConnection' not found.");
 
 builder.Services.AddTransient<ICurrentUserService, CurrentUserService>();
+
 builder.Services.AddDbContext<foodContext>(options => options.UseSqlServer(connectionString));
 builder.Services.AddDbContext<ItemsContext>();
 

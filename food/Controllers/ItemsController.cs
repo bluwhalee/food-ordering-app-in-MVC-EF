@@ -13,13 +13,17 @@ namespace food.Controllers
     public class ItemsController : Controller
     {
         private readonly ItemsContext _context;
-        private readonly IWebHostEnvironment _hostEnvironment;
-        public ItemsController(ItemsContext context,IWebHostEnvironment hostEnvironment)
+
+        string wwwRootPath = "D:/EAD/Food/food/wwwroot";
+        public ItemsController(ItemsContext context)
         {
             _context = context;
-            _hostEnvironment= hostEnvironment;
+            
         }
-
+        public List<Item> getItems()
+        {
+            return _context.Items.ToList<Item>();
+        }
         // GET: Items
         public async Task<IActionResult> Index()
         {
@@ -28,7 +32,9 @@ namespace food.Controllers
                           Problem("Entity set 'ItemsContext.Items'  is null.");
         }
 
+
         // GET: Items/Details/5
+        [Route("item/details/")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.Items == null)
@@ -47,6 +53,8 @@ namespace food.Controllers
         }
 
         // GET: Items/Create
+
+        [Route("item/create")]
         public IActionResult Create()
         {
             return View();
@@ -57,16 +65,17 @@ namespace food.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,Description,Price,ImageFile,CreatedByUser,CreatedDate,ModifiedByuser,ModifiedDate")] Item item)
+        public async Task<IActionResult> Create([Bind("Id,Title,Description,Price,ImageFile,CreatedByUser,CreatedDate,ModifiedByUser,ModifiedDate")] Item item)
         {
-            if (ModelState.IsValid)
+            Console.WriteLine("dd");
+            // if (ModelState.IsValid)
             {
                 
-                string wwwRootPath = _hostEnvironment.WebRootPath;
                 string fileName = Path.GetFileNameWithoutExtension(item.ImageFile.FileName);
                 string extension = Path.GetExtension(item.ImageFile.FileName);
                 item.ImageName = fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
                 string path = Path.Combine(wwwRootPath + "/image/", fileName);
+
                 Console.WriteLine(path);
                 using (var fileStream = new FileStream(path, FileMode.Create))
                 {
@@ -74,8 +83,9 @@ namespace food.Controllers
                 }
 
 
-
+                Console.WriteLine("dd");
                 _context.Add(item);
+                
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
@@ -103,7 +113,7 @@ namespace food.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Description,Price,ImageName,CreatedByUser,CreatedDate,ModifiedByuser,ModifiedDate")] Item item)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Description,Price,ImageName,CreatedByUser,CreatedDate,ModifiedByUser,ModifiedDate")] Item item)
         {
             if (id != item.Id)
             {
@@ -163,6 +173,11 @@ namespace food.Controllers
             var item = await _context.Items.FindAsync(id);
             if (item != null)
             {
+                var imagePath = Path.Combine(wwwRootPath + "/image/", item.ImageName); ;
+                if(System.IO.File.Exists(imagePath))
+                {
+                    System.IO.File.Delete(imagePath);
+                }
                 _context.Items.Remove(item);
             }
             

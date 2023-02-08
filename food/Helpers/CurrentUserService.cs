@@ -1,9 +1,9 @@
-﻿namespace food
+﻿namespace food.Helpers
 {
     public class CurrentUserService:ICurrentUserService
     {
         private readonly IHttpContextAccessor httpContextAccessor;
-        public CurrentUserService(IHttpContextAccessor httpContextAccessor) 
+        public CurrentUserService(IHttpContextAccessor httpContextAccessor)
         {
             this.httpContextAccessor = httpContextAccessor ?? throw new ArgumentNullException(nameof(httpContextAccessor));
         }

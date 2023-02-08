@@ -1,4 +1,4 @@
-﻿namespace food
+﻿namespace food.Helpers
 {
     public interface ICurrentUserService
     {
