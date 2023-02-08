@@ -1,0 +1,42 @@
+﻿@model food.Models.Item
+@{
+    string s = "~/image/" + @Model.ImageName;
+}
+                <div class="food-card">
+                    <div class="food-card_img">
+                        <img src=@s width="250px" height="250px" />
+                        <a href="#!"><i class="far fa-heart"></i></a>
+                    </div>
+                    
+                    <div class="food-card_content">
+                        <div class="food-card_title-section">
+                            <a href="#!" class="food-card_title">@Model.Title</a>
+                            
+                        </div>
+                        <div class="food-card_bottom-section">
+                            
+                            <hr>
+                            <div class="space-between">
+                                <div class="food-card_price">
+                                    <span>Rs.@Model.Price</span>
+                                </div>
+                                <div class="food-card_order-count">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <form id="" method="post" action="/Home/AddToCart">
+                                                <input type="hidden" value=@Model.Id name="Id" />
+                                                <input type="hidden" value=@Model.Title name="Title" />
+                                                <input type="hidden" value=@Model.Price name="Price" />
+                                                <label for="Quantity">Choose Quantity:</label>
+                                                <input class="form-control mb-3" style="" type="number" name="Quantity" value="0"/>
+                                                <input type="submit" class="btn btn-info" value="Add to Cart" />
+                                            </form>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+ 
